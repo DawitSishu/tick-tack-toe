@@ -3,14 +3,31 @@ import Box from './components/Box';
 import { useEffect, useState } from "react";
 
 function App() {
+  const [playCpu,setPLayCpu] = useState(true)
   const [scoreUser,setScoreUser] = useState(0)
   const [scoreCPu,setScoreCPu] = useState(0)
-
+  const [turnX,setTurnX] = useState(true);
+  // const [userWon,setUserWon] = useState(false)
+  // const [cpuWon,setCpuWon] = useState(false)
   const [board,setBoard] = useState([
     '','','','','','','','',''
   ])
 
-  const handleGameStatus = (position) => {
+  const didTheGameEnd = (position) => {
+    let possibleMove = []
+      for(let i = 0; i <position.length;i++ ){
+        if(position[i] == ''){
+          possibleMove.push(i)
+        }
+      }
+      if(possibleMove.length == 0){
+        return true
+      }else{
+        return false
+      }
+  }
+
+  const handleGame = (position) => {
       if( position[0] != '' && position[0] == position[1] && position[1]== position[2]){     
         return true;
       }
@@ -45,13 +62,17 @@ function App() {
       return
     }
     newBoard[id] =  'X' 
-    if(handleGameStatus(newBoard)){
+    if(handleGame(newBoard)){
       setBoard([...newBoard])
       alert(`You won the round`)
-      setScoreUser(scoreUser + 1)
+      setScoreCPu(scoreCPu + 1)
       return;
     }
     setBoard([...newBoard])
+    if(didTheGameEnd([...newBoard])){
+      alert('this round ended in a draw')
+      return
+    }
     makeCpuMove([...newBoard])
     
 }
@@ -67,7 +88,7 @@ function App() {
       let randIdx = Math.floor(Math.random() * (possibleMove.length - 1))
       console.log(position,randIdx,possibleMove)
       position[possibleMove[randIdx]] = 'O'
-      if(handleGameStatus(position)){
+      if(handleGame(position)){
         setBoard([...position])
         alert(`CPU won the round`)
         setScoreCPu(scoreCPu + 1)
@@ -76,7 +97,30 @@ function App() {
     setBoard([...position])
   }
 
-  
+  const handlePlayerClick = (id) =>{
+    let newBoard = [...board]
+    if(newBoard[id] !=''){
+      alert('choose another position!!')
+      return
+    }
+    newBoard[id] =  turnX ? 'X' : 'O' 
+    if(handleGame(newBoard)){
+      setBoard([...newBoard])
+      alert(`${turnX ? 'Plyer-1' : 'Player-2'} won the round`)
+      if(turnX){
+        setScoreUser(scoreUser + 1)
+      }else{
+        setScoreCPu(scoreCPu + 1)
+      }
+      return;
+    }
+    setBoard([...newBoard])
+    setTurnX(!turnX)
+    if(didTheGameEnd([...newBoard])){
+      alert('this round ended in a draw')
+      return
+    }
+  } 
  
  
 
@@ -84,14 +128,26 @@ function App() {
     <>
     <div className="parent">
       {board.map((Element,index) => {
-        return <Box text={Element} id ={index} key={index} onClick={handleClick}  />
+        return <Box text={Element} id ={index} key={index} onClick={playCpu ? handleClick : handlePlayerClick}  />
       }
       )}
-        <h3>user  Score : {scoreUser}</h3>
-      <h3>cpu  Score : {scoreCPu}</h3>
+        {playCpu && <>
+          <h3>user  Score : {scoreUser}</h3>
+      <h3>cpu  Score : {scoreCPu}</h3></>}
+      {!playCpu && <>
+          <h3>Player1-'X' score : {scoreUser}</h3>
+      <h3>Player2-'O' Score : {scoreCPu}</h3></>}
        </div>
       <div className='score'>
-      <button className = "btn"onClick={()=>setBoard([  '','','','','','','','',''])}>reset the board</button>
+        <button className='btn' onClick={() => {
+          setPLayCpu(!playCpu);
+          setBoard([  '','','','','','','','',''])}}>
+            {playCpu ? "2 Players" : "1 Player"}
+            </button>
+      <button className = "btn"onClick={()=>
+        setBoard([  '','','','','','','','',''])}>
+          reset the board
+          </button>
       </div>
  
   </>);
