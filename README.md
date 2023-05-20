@@ -1,6 +1,10 @@
-## Tick Tak Toe with Create React App
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Tik Tak Toe with Create React App
+A clone of tik-tak-toe game with react.js
 
+## Features:
+  1. single player with my dummy cpu
+  2. multi-player with a friend
+  
 ## Available Scripts
 
 In the project directory, you can run:
