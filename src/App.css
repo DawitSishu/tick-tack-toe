@@ -1,5 +1,4 @@
 body {
-  margin: 30px;
   background-color: black;
   color: aliceblue;
 }
@@ -11,8 +10,8 @@ body {
   display: grid;
   justify-content: center;
   grid-gap: 10px;
-  grid-template-columns: repeat(3, 150px);
-  grid-template-rows: repeat(3, 150px);
+  grid-template-columns: repeat(3, 120px);
+  grid-template-rows: repeat(3, 100px);
 }
 .parent > div {
   padding: 10px;
@@ -48,4 +47,10 @@ body {
   background-color: aquamarine;
   /* width: 70%;
   height: 40%; */
+}
+
+.info{
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
 }

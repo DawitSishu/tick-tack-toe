@@ -9,6 +9,9 @@ function App() {
   const [turnX,setTurnX] = useState(true);
   // const [userWon,setUserWon] = useState(false)
   // const [cpuWon,setCpuWon] = useState(false)
+  const winningCombo = [
+    "012","345","678","036","147","258","048","246"
+  ]
   const [board,setBoard] = useState([
     '','','','','','','','',''
   ])
@@ -80,11 +83,16 @@ function App() {
 
   const makeCpuMove = (position) =>{
     let possibleMove = []
+    let userMoves = []
       for(let i = 0; i <position.length;i++ ){
         if(position[i] == ''){
           possibleMove.push(i)
+        }else if(position[i] == 'X'){
+          userMoves.push(i)
         }
       }
+     
+      
       let randIdx = Math.floor(Math.random() * (possibleMove.length - 1))
       console.log(position,randIdx,possibleMove)
       position[possibleMove[randIdx]] = 'O'
@@ -126,6 +134,14 @@ function App() {
 
   return (
     <>
+    <div className='info'>
+      <p>
+      A simple tic-tac-toe game<br/>
+      play with another person or my dummy-cpu<br/>
+      use 1player or 2player button to toggle the game<br />
+      use reset board button to clear the board and play again
+      </p>
+    </div>
     <div className="parent">
       {board.map((Element,index) => {
         return <Box text={Element} id ={index} key={index} onClick={playCpu ? handleClick : handlePlayerClick}  />
