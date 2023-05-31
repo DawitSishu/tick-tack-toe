@@ -1,73 +1,49 @@
-## Tik Tak Toe with Create React App
-A clone of tik-tak-toe game with react.js
+# Tic-Tac-Toe Game
 
-## Features:
-  1. single player with my dummy cpu
-  2. multi-player with a friend
-  
-## Available Scripts
+A simple Tic-Tac-Toe game built with React. Play against another player or the computer AI. Use the 1 Player or 2 Players button to toggle the game mode. Reset the board to start a new game.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- Single Player and Two Player modes: Play against another player or challenge the computer AI.
+- Interactive gameplay: Click on the empty cells to make your move.
+- Win detection: The game detects winning combinations and declares a winner.
+- Draw detection: If no more moves are available and no player has won, the game is declared a draw.
+- Score tracking: Keep track of the score for each player.
+- Responsive design: Enjoy the game on various devices with a responsive layout.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Demo
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Check out the live demo of the Tic-Tac-Toe Game [here](https://tick-tack-toe-one.vercel.app/).
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To run the Tic-Tac-Toe game locally, follow these steps:
 
-### `npm run build`
+1. Clone the repository:
+   git clone https://github.com/DawitSishu/tic-tac-toe.git
+2. Navigate to the project directory:
+    cd tic-tac-toe
+3. Install the dependencies:
+    npm install
+4. Start the development server: 
+    npm start
+5. Open the game in your browser at http://localhost:3000/
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Contributing
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Contributions to the Boredom Reliever App are welcome! If you have any suggestions, new features, or bug fixes, please follow these steps:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Fork the repository.
 
-### `npm run eject`
+2. Create a new branch: `git checkout -b feature/your-feature-name`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Make your changes and commit them: `git commit -m 'Add your commit message'`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Push to the branch: `git push origin feature/your-feature-name`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5. Open a pull request, describing your changes and their purpose.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## License
 
-## Learn More
+The Boredom Reliever App is open-source software licensed under the [MIT License](LICENSE).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
