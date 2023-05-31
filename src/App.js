@@ -80,30 +80,66 @@ function App() {
     
 }
 
+const makeCpuMove = (position) => {
+  const newBoard = [...position];
+  let bestScore = -Infinity;
+  let bestMove;
 
-  const makeCpuMove = (position) =>{
-    let possibleMove = []
-    let userMoves = []
-      for(let i = 0; i <position.length;i++ ){
-        if(position[i] == ''){
-          possibleMove.push(i)
-        }else if(position[i] == 'X'){
-          userMoves.push(i)
-        }
+  for (let i = 0; i < newBoard.length; i++) {
+    if (newBoard[i] === '') {
+      newBoard[i] = 'O';
+      let score = minimax(newBoard, 0, false);
+      newBoard[i] = '';
+
+      if (score > bestScore) {
+        bestScore = score;
+        bestMove = i;
       }
-     
-      
-      let randIdx = Math.floor(Math.random() * (possibleMove.length - 1))
-      console.log(position,randIdx,possibleMove)
-      position[possibleMove[randIdx]] = 'O'
-      if(handleGame(position)){
-        setBoard([...position])
-        alert(`CPU won the round`)
-        setScoreCPu(scoreCPu + 1)
-        return;
-      }
-    setBoard([...position])
+    }
   }
+
+  newBoard[bestMove] = 'O';
+  setBoard(newBoard);
+
+  if (handleGame(newBoard)) {
+    alert(`CPU won the round`);
+    setScoreCPu(scoreCPu + 1);
+    return;
+  }
+};
+
+const minimax = (position, depth, isMaximizing) => {
+  if (handleGame(position)) {
+    return isMaximizing ? -1 : 1;
+  } else if (didTheGameEnd(position)) {
+    return 0;
+  }
+
+  if (isMaximizing) {
+    let bestScore = -Infinity;
+    for (let i = 0; i < position.length; i++) {
+      if (position[i] === '') {
+        position[i] = 'O';
+        let score = minimax(position, depth + 1, false);
+        position[i] = '';
+        bestScore = Math.max(score, bestScore);
+      }
+    }
+    return bestScore;
+  } else {
+    let bestScore = Infinity;
+    for (let i = 0; i < position.length; i++) {
+      if (position[i] === '') {
+        position[i] = 'X';
+        let score = minimax(position, depth + 1, true);
+        position[i] = '';
+        bestScore = Math.min(score, bestScore);
+      }
+    }
+    return bestScore;
+  }
+};
+
 
   const handlePlayerClick = (id) =>{
     let newBoard = [...board]
